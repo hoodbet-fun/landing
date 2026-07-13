@@ -14,14 +14,16 @@ export function HoodPotSection({ content, appUrl, stack }) {
   return (
     <section className="section section-featured hoodpot-section" id="hoodpot">
       <div className="hoodpot-header">
-        <div className="featured-label">Live product</div>
+        <div className="hoodpot-header-copy">
+          <div className="featured-label">Live product</div>
+          <p className="section-label">{content.subtitle}</p>
+          <h2 className="hoodpot-title">{content.title}</h2>
+        </div>
         <StackStrip items={stack} className="hoodpot-stack" />
       </div>
 
       <div className="hoodpot-grid">
         <div className="hoodpot-copy">
-          <p className="section-label">{content.subtitle}</p>
-          <h2>{content.title}</h2>
           <p className="hoodpot-lead">{content.lead}</p>
 
           <ul className="hoodpot-highlights">
@@ -83,14 +85,9 @@ export function HoodPotSection({ content, appUrl, stack }) {
       </div>
 
       <ol className="hoodpot-steps">
-        {content.steps.map((step, index) => (
+        {content.steps.map((step) => (
           <li key={step.num} className="hoodpot-step">
-            <div className="hoodpot-step-marker">
-              <span className="hoodpot-step-num">{step.num}</span>
-              {index < content.steps.length - 1 && (
-                <span className="hoodpot-step-connector" aria-hidden />
-              )}
-            </div>
+            <span className="hoodpot-step-num">{step.num}</span>
             <div className="hoodpot-step-body">
               <h3>{step.title}</h3>
               <p>{step.text}</p>

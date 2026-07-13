@@ -147,7 +147,7 @@ export const developersSection = {
   github: {
     label: 'GitHub',
     hint: 'hoodbet-fun org · 6 repos',
-    repos: ['contracts', 'app', 'landing', 'bots', 'subgraph', 'hoodbet'],
+    repos: ['docs', 'contracts', 'app', 'landing', 'bots', 'subgraph', 'hoodbet'],
   },
   gitbook: {
     label: 'GitBook',

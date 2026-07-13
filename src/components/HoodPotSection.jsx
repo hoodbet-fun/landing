@@ -13,75 +13,60 @@ export function HoodPotSection({ content, appUrl, stack }) {
 
   return (
     <section className="section section-featured hoodpot-section" id="hoodpot">
-      <div className="hoodpot-header">
-        <div className="hoodpot-header-copy">
-          <div className="featured-label">Live product</div>
-          <p className="section-label">{content.subtitle}</p>
-          <h2 className="hoodpot-title">{content.title}</h2>
-        </div>
+      <header className="hoodpot-intro">
+        <div className="featured-label">Live product</div>
+        <p className="section-label">{content.subtitle}</p>
+        <h2 className="hoodpot-title">{content.title}</h2>
         <StackStrip items={stack} className="hoodpot-stack" />
+      </header>
+
+      <div className="hoodpot-live-bar" aria-label="Live HoodPot stats">
+        <div className="hoodpot-metric hoodpot-metric-primary">
+          <span className="hoodpot-metric-label">Prize pool</span>
+          <strong className="hoodpot-metric-value">${stats ? formatUsd6(stats.jackpot) : '—'}</strong>
+          <span className="hoodpot-metric-hint">USDG jackpot</span>
+        </div>
+        <div className="hoodpot-metric">
+          <span className="hoodpot-metric-label">Vault TVL</span>
+          <strong className="hoodpot-metric-value">${stats ? formatUsd6(stats.tvl) : '—'}</strong>
+        </div>
+        <div className="hoodpot-metric">
+          <span className="hoodpot-metric-label">Next draw</span>
+          <strong className="hoodpot-metric-value">{countdown}</strong>
+          <span className="hoodpot-metric-hint">#{stats?.openDrawId?.toString() || '—'}</span>
+        </div>
+        <div className="hoodpot-metric hoodpot-metric-fees">
+          <span className="hoodpot-metric-label">Fees → jackpot</span>
+          <strong className="hoodpot-metric-value">50% + 5%</strong>
+          <span className="hoodpot-metric-hint">performance + management</span>
+        </div>
       </div>
 
-      <div className="hoodpot-grid">
-        <div className="hoodpot-copy">
-          <p className="hoodpot-lead">{content.lead}</p>
+      <div className="hoodpot-body">
+        <p className="hoodpot-lead">{content.lead}</p>
 
-          <ul className="hoodpot-highlights">
-            {content.highlights.map((item) => (
-              <li key={item.text}>
-                <span className="hoodpot-highlight-icon" aria-hidden>{item.icon}</span>
-                <span>{item.text}</span>
-              </li>
-            ))}
-          </ul>
+        <ul className="hoodpot-highlights">
+          {content.highlights.map((item) => (
+            <li key={item.text}>
+              <span className="hoodpot-highlight-icon" aria-hidden>{item.icon}</span>
+              <span>{item.text}</span>
+            </li>
+          ))}
+        </ul>
 
-          <div className="cta-row hoodpot-cta-row">
-            <a className="btn btn-primary btn-lg" href={appUrl}>
-              Deposit on app.hoodbet.fun
-            </a>
-            <a
-              className="btn btn-secondary"
-              href={`${EXPLORER}/address/${addresses.prizeVault}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              PrizeVault on-chain
-            </a>
-          </div>
+        <div className="cta-row hoodpot-cta-row">
+          <a className="btn btn-primary btn-lg" href={appUrl}>
+            Deposit on app.hoodbet.fun
+          </a>
+          <a
+            className="btn btn-secondary"
+            href={`${EXPLORER}/address/${addresses.prizeVault}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            PrizeVault on-chain
+          </a>
         </div>
-
-        <aside className="hoodpot-live-card" aria-label="Live HoodPot stats">
-          <div className="hoodpot-live-badge">
-            <span className="hoodpot-live-dot" aria-hidden />
-            Mainnet live
-          </div>
-
-          <div className="hoodpot-live-stat hoodpot-live-stat-primary">
-            <span className="hoodpot-live-label">Prize pool</span>
-            <strong>${stats ? formatUsd6(stats.jackpot) : '—'}</strong>
-            <span className="hoodpot-live-hint">USDG jackpot</span>
-          </div>
-
-          <div className="hoodpot-live-row">
-            <div className="hoodpot-live-stat">
-              <span className="hoodpot-live-label">Vault TVL</span>
-              <strong>${stats ? formatUsd6(stats.tvl) : '—'}</strong>
-            </div>
-            <div className="hoodpot-live-stat">
-              <span className="hoodpot-live-label">Next draw</span>
-              <strong>{countdown}</strong>
-              <span className="hoodpot-live-hint">#{stats?.openDrawId?.toString() || '—'}</span>
-            </div>
-          </div>
-
-          <div className="hoodpot-live-fees">
-            <span>50% performance</span>
-            <span className="hoodpot-live-fees-dot" aria-hidden>+</span>
-            <span>5% management</span>
-            <span className="hoodpot-live-fees-arrow" aria-hidden>→</span>
-            <span className="hoodpot-live-fees-target">jackpot</span>
-          </div>
-        </aside>
       </div>
 
       <ol className="hoodpot-steps">

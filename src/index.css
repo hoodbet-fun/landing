@@ -479,9 +479,12 @@ body.nav-open .mobile-cta { display: none !important; }
 
 .hoodpot-live-bar {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 1rem;
   margin-bottom: 2rem;
+}
+@media (max-width: 1100px) {
+  .hoodpot-live-bar { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 900px) {
   .hoodpot-live-bar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -504,6 +507,14 @@ body.nav-open .mobile-cta { display: none !important; }
 .hoodpot-metric-primary {
   border-color: rgba(255, 215, 0, 0.32);
   background: linear-gradient(160deg, rgba(255, 215, 0, 0.1), rgba(0, 0, 0, 0.22));
+}
+.hoodpot-metric-apy {
+  border-color: rgba(0, 200, 5, 0.42);
+  background: linear-gradient(160deg, rgba(0, 200, 5, 0.16), rgba(0, 0, 0, 0.2));
+}
+.hoodpot-metric-apy .hoodpot-metric-value {
+  color: var(--primary);
+  font-size: clamp(1.85rem, 4.5vw, 2.75rem);
 }
 .hoodpot-metric-fees {
   border-color: rgba(0, 200, 5, 0.28);
@@ -543,14 +554,46 @@ body.nav-open .mobile-cta { display: none !important; }
   padding: clamp(1rem, 2.5vw, 1.35rem) clamp(1rem, 2.5vw, 1.5rem);
 }
 .vault-snapshot-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: stretch;
   gap: 1.25rem;
   margin-bottom: 1rem;
 }
 @media (max-width: 520px) {
-  .vault-snapshot-head { flex-direction: column; }
+  .vault-snapshot-head { grid-template-columns: 1fr; }
+}
+.vault-snapshot-apy-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 1rem 1.15rem;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 200, 5, 0.38);
+  background: linear-gradient(145deg, rgba(0, 200, 5, 0.16), rgba(0, 0, 0, 0.22));
+}
+.vault-snapshot-apy-value {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 2.85rem);
+  line-height: 1;
+  color: var(--primary);
+}
+.vault-snapshot-apy-hint {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.vault-snapshot-head-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.85rem;
+  min-width: 0;
+}
+.vault-snapshot-tvl strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
 }
 .vault-snapshot-label {
   display: block;
@@ -573,16 +616,9 @@ body.nav-open .mobile-cta { display: none !important; }
   font-size: 0.82rem;
   color: var(--muted);
 }
-.vault-snapshot-apys {
-  display: flex;
-  gap: 1.5rem;
-  flex-shrink: 0;
-}
-.vault-snapshot-apys strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
-  color: var(--primary);
+.vault-allocation-apy {
+  color: var(--primary) !important;
+  font-size: 0.95rem;
 }
 .vault-snapshot-stat-label {
   display: block;

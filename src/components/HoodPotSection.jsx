@@ -1,5 +1,7 @@
 import { addresses, formatCountdown, formatUsd6 } from '../chain.js'
 import { useProtocolStats } from '../hooks/useProtocolStats.js'
+import { useMorphoVaultSnapshot } from '../hooks/useMorphoVaultSnapshot.js'
+import { formatApyPercent } from '../morphoVault.js'
 import { StackStrip } from './StackStrip.jsx'
 import { VaultSnapshot } from './VaultSnapshot.jsx'
 
@@ -7,6 +9,7 @@ const EXPLORER = 'https://robinhoodchain.blockscout.com'
 
 export function HoodPotSection({ content, appUrl, stack }) {
   const { stats, now } = useProtocolStats()
+  const { snapshot: vaultSnapshot, loading: vaultLoading } = useMorphoVaultSnapshot(addresses.morphoVault)
 
   const countdown = stats?.drawClosesAt
     ? formatCountdown(Number(stats.drawClosesAt) - now)
@@ -26,6 +29,13 @@ export function HoodPotSection({ content, appUrl, stack }) {
           <span className="hoodpot-metric-label">Prize pool</span>
           <strong className="hoodpot-metric-value">${stats ? formatUsd6(stats.jackpot) : '—'}</strong>
           <span className="hoodpot-metric-hint">USDG jackpot</span>
+        </div>
+        <div className="hoodpot-metric hoodpot-metric-apy">
+          <span className="hoodpot-metric-label">Net APY</span>
+          <strong className="hoodpot-metric-value">
+            {vaultLoading ? '…' : formatApyPercent(vaultSnapshot?.netApy)}
+          </strong>
+          <span className="hoodpot-metric-hint">Morpho yield vault</span>
         </div>
         <div className="hoodpot-metric">
           <span className="hoodpot-metric-label">Vault TVL</span>

@@ -1,5 +1,9 @@
 export const hero = {
-  badge: 'Robinhood Chain · Morpho · HoodPot',
+  stack: [
+    { label: 'Robinhood Chain', href: 'https://docs.robinhood.com/chain/' },
+    { label: 'Morpho', href: 'https://morpho.org/' },
+    { label: 'HoodPot', href: 'https://app.hoodbet.fun' },
+  ],
   headline: 'Trade the Future.',
   headlineAccent: 'Own the Outcome.',
   subheadline:

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { hero, manifesto, roadmap, tiers, roadmapSection, joinSection, developersSection } from './content/manifesto.js'
 import { addresses, fetchProtocolStats, formatCountdown, formatUsd6 } from './chain.js'
+import { StackStrip } from './components/StackStrip.jsx'
 
 const APP_URL = import.meta.env.PROD ? 'https://app.hoodbet.fun' : 'http://localhost:5174'
 const GITHUB_URL = 'https://github.com/hoodbet-fun'
@@ -114,10 +115,7 @@ export default function App() {
         </nav>
 
         <header className="hero">
-          <div className="badge-row">
-            <div className="badge">{hero.badge}</div>
-            <span className="live-pill">● Mainnet live</span>
-          </div>
+          <StackStrip items={hero.stack} className="stack-strip-hero" />
           <h1>
             {hero.headline}
             <span className="accent">{hero.headlineAccent}</span>

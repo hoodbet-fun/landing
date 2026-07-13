@@ -193,6 +193,11 @@ a:hover { text-decoration: underline; }
 
 .site-nav-mobile { display: none; }
 
+@media (min-width: 1025px) and (max-width: 1180px) {
+  .site-nav-group a { padding: 0.35rem 0.5rem; font-size: 0.82rem; }
+  .site-header-cta { padding: 0.5rem 0.8rem !important; font-size: 0.82rem !important; }
+}
+
 @media (max-width: 1024px) {
   .site-nav-desktop { display: none; }
   .site-header-cta { display: none; }

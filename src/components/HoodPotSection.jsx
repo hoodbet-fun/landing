@@ -1,6 +1,7 @@
 import { addresses, formatCountdown, formatUsd6 } from '../chain.js'
 import { useProtocolStats } from '../hooks/useProtocolStats.js'
 import { StackStrip } from './StackStrip.jsx'
+import { VaultSnapshot } from './VaultSnapshot.jsx'
 
 const EXPLORER = 'https://robinhoodchain.blockscout.com'
 
@@ -41,6 +42,8 @@ export function HoodPotSection({ content, appUrl, stack }) {
           <span className="hoodpot-metric-hint">performance + management</span>
         </div>
       </div>
+
+      <VaultSnapshot className="hoodpot-vault-snapshot" />
 
       <div className="hoodpot-body">
         <p className="hoodpot-lead">{content.lead}</p>

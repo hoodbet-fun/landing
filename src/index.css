@@ -173,6 +173,124 @@ a:hover { text-decoration: underline; }
   border-radius: 20px; padding: 2.5rem 2rem; margin: 2rem 0;
   background: linear-gradient(160deg, rgba(0, 200, 5, 0.06), transparent);
 }
+.hoodpot-section { overflow: hidden; }
+.hoodpot-header {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 1rem; margin-bottom: 2rem;
+}
+.hoodpot-stack { margin: 0; }
+.hoodpot-grid {
+  display: grid; grid-template-columns: 1.15fr 0.85fr;
+  gap: 2rem; align-items: start;
+}
+@media (max-width: 860px) {
+  .hoodpot-grid { grid-template-columns: 1fr; }
+}
+.hoodpot-copy h2 { max-width: 14ch; }
+.hoodpot-lead {
+  color: var(--muted); font-size: 1.05rem; line-height: 1.7;
+  margin: 0 0 1.5rem; max-width: 520px;
+}
+.hoodpot-highlights {
+  list-style: none; margin: 0 0 2rem; padding: 0;
+  display: grid; gap: 0.85rem; max-width: 520px;
+}
+.hoodpot-highlights li {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  color: var(--text); font-size: 0.95rem; line-height: 1.5;
+}
+.hoodpot-highlight-icon {
+  flex-shrink: 0; width: 1.75rem; height: 1.75rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 8px; background: rgba(0, 200, 5, 0.12);
+  border: 1px solid rgba(0, 200, 5, 0.22);
+  color: var(--primary); font-size: 0.75rem; font-weight: 700;
+}
+.hoodpot-cta-row { justify-content: flex-start; }
+.hoodpot-live-card {
+  position: relative; padding: 1.5rem;
+  border-radius: 16px; border: 1px solid rgba(255, 215, 0, 0.22);
+  background:
+    radial-gradient(ellipse 80% 60% at 100% 0%, rgba(255, 215, 0, 0.1), transparent),
+    linear-gradient(160deg, rgba(0, 200, 5, 0.08), rgba(17, 17, 17, 0.9));
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+.hoodpot-live-badge {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  margin-bottom: 1.25rem; padding: 0.35rem 0.75rem 0.35rem 0.55rem;
+  border-radius: 999px; background: rgba(0, 200, 5, 0.14);
+  border: 1px solid rgba(0, 200, 5, 0.28);
+  color: var(--primary); font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.hoodpot-live-dot {
+  width: 0.45rem; height: 0.45rem; border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 0 rgba(0, 200, 5, 0.55);
+  animation: stack-live-pulse 2s ease-in-out infinite;
+}
+.hoodpot-live-stat { display: flex; flex-direction: column; gap: 0.2rem; }
+.hoodpot-live-stat-primary {
+  margin-bottom: 1.25rem; padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.hoodpot-live-stat-primary strong {
+  font-family: var(--font-display); font-size: clamp(2rem, 5vw, 2.6rem);
+  color: var(--gold); line-height: 1.1; letter-spacing: -0.02em;
+}
+.hoodpot-live-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.hoodpot-live-row strong {
+  font-family: var(--font-display); font-size: 1.25rem;
+  color: var(--primary); line-height: 1.2;
+}
+.hoodpot-live-label {
+  font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--muted);
+}
+.hoodpot-live-hint { font-size: 0.8rem; color: var(--muted); }
+.hoodpot-live-fees {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.5rem;
+  padding: 0.75rem 0.9rem; border-radius: 10px;
+  background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border);
+  font-size: 0.82rem; color: var(--muted);
+}
+.hoodpot-live-fees-dot { color: var(--muted); font-weight: 700; }
+.hoodpot-live-fees-arrow { color: var(--primary); font-weight: 700; }
+.hoodpot-live-fees-target { color: var(--gold); font-weight: 600; }
+
+.hoodpot-steps {
+  list-style: none; margin: 2.5rem 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  border-top: 1px solid var(--border); padding-top: 2rem;
+}
+@media (max-width: 860px) {
+  .hoodpot-steps { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; }
+}
+@media (max-width: 520px) {
+  .hoodpot-steps { grid-template-columns: 1fr; }
+}
+.hoodpot-step { display: flex; flex-direction: column; gap: 0.85rem; padding-right: 1rem; }
+.hoodpot-step-marker { position: relative; display: flex; align-items: center; }
+.hoodpot-step-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2.25rem; height: 2.25rem; border-radius: 50%;
+  background: rgba(0, 200, 5, 0.12); border: 1px solid rgba(0, 200, 5, 0.35);
+  color: var(--primary); font-weight: 700; font-size: 0.8rem;
+  font-family: var(--font-display);
+}
+.hoodpot-step-connector {
+  flex: 1; height: 2px; margin: 0 0.5rem 0 0.75rem;
+  background: linear-gradient(90deg, rgba(0, 200, 5, 0.45), rgba(0, 200, 5, 0.08));
+}
+@media (max-width: 860px) {
+  .hoodpot-step-connector { display: none; }
+}
+.hoodpot-step-body h3 { margin: 0 0 0.35rem; font-size: 1.05rem; }
+.hoodpot-step-body p { margin: 0; font-size: 0.9rem; color: var(--muted); max-width: none; }
+
 .featured-label {
   display: inline-block; margin-bottom: 0.75rem;
   font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
@@ -216,21 +334,95 @@ a:hover { text-decoration: underline; }
   font-size: 0.85rem; color: var(--muted);
 }
 
-.roadmap { position: relative; padding-left: 2rem; margin-top: 2rem; }
-.roadmap::before {
-  content: ''; position: absolute; left: 0.45rem; top: 0; bottom: 0; width: 2px;
-  background: linear-gradient(var(--primary), transparent);
+.roadmap-section { padding-bottom: 3rem; }
+.roadmap-intro {
+  color: var(--muted); font-size: 1.05rem; line-height: 1.75;
+  max-width: 720px; margin-bottom: 2rem;
 }
-.roadmap-item { position: relative; margin-bottom: 2rem; padding-left: 1.5rem; }
-.roadmap-item::before {
-  content: ''; position: absolute; left: -1.55rem; top: 0.35rem;
-  width: 12px; height: 12px; border-radius: 50%; background: var(--bg);
-  border: 2px solid var(--muted);
+.roadmap-pillars {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.85rem; margin-bottom: 2rem;
 }
-.roadmap-item.live::before { background: var(--primary); border-color: var(--primary); box-shadow: 0 0 12px rgba(0,200,5,0.5); }
-.roadmap-item.in_progress::before { background: var(--primary); border-color: var(--primary); animation: pulse 2s infinite; }
-.roadmap-header { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-bottom: 0.35rem; }
-.roadmap-header h3 { margin: 0; font-family: var(--font-display); font-size: 1.25rem; }
+.roadmap-pillar {
+  padding: 1rem 1.1rem; border-radius: 12px;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(0, 200, 5, 0.05), transparent);
+}
+.roadmap-pillar strong {
+  display: block; font-family: var(--font-display);
+  font-size: 0.9rem; color: var(--primary); margin-bottom: 0.35rem;
+}
+.roadmap-pillar span { font-size: 0.85rem; color: var(--muted); line-height: 1.45; }
+.roadmap-meta {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem;
+  margin-bottom: 2.5rem; padding: 0.85rem 1rem; border-radius: 12px;
+  border: 1px solid var(--border); background: var(--surface);
+  font-size: 0.85rem; color: var(--muted);
+}
+.roadmap-meta-stat strong { color: var(--primary); font-family: var(--font-display); }
+.roadmap-meta-dot { opacity: 0.4; }
+.roadmap-meta-note { font-style: italic; }
+
+.roadmap-tracks { display: flex; flex-direction: column; gap: 2.5rem; }
+.roadmap-track-header { margin-bottom: 1.25rem; max-width: 640px; }
+.roadmap-track-header h3 {
+  margin: 0 0 0.35rem; font-family: var(--font-display);
+  font-size: 1.15rem; color: var(--gold);
+}
+.roadmap-track-header p { margin: 0; font-size: 0.92rem; color: var(--muted); max-width: none; }
+
+.roadmap-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.roadmap-card {
+  display: flex; flex-direction: column; gap: 0.5rem;
+  padding: 1.25rem; border-radius: 14px;
+  border: 1px solid var(--border); background: var(--surface);
+  transition: border-color 0.15s, transform 0.15s;
+}
+.roadmap-card:hover { border-color: rgba(255, 255, 255, 0.14); }
+.roadmap-card-live {
+  border-color: rgba(0, 200, 5, 0.35);
+  background: linear-gradient(160deg, rgba(0, 200, 5, 0.08), var(--surface));
+  box-shadow: 0 0 24px rgba(0, 200, 5, 0.06);
+}
+.roadmap-card-top {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 0.75rem;
+}
+.roadmap-card h4 {
+  margin: 0; font-family: var(--font-display); font-size: 1.1rem;
+}
+.roadmap-card .roadmap-quarter {
+  font-size: 0.78rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--muted);
+}
+.roadmap-card .roadmap-tagline {
+  margin: 0; font-size: 0.9rem; font-style: italic; color: var(--gold);
+}
+.roadmap-card .roadmap-features {
+  margin: 0.25rem 0 0; padding-left: 1.1rem;
+  font-size: 0.85rem; color: var(--muted); flex: 1;
+}
+.roadmap-inspired {
+  margin: 0.5rem 0 0; padding-top: 0.65rem;
+  border-top: 1px dashed var(--border);
+  font-size: 0.75rem; color: var(--muted); line-height: 1.4;
+}
+.roadmap-inspired span {
+  display: inline-block; margin-right: 0.35rem;
+  padding: 0.1rem 0.4rem; border-radius: 4px;
+  background: rgba(255, 215, 0, 0.1); color: var(--gold);
+  font-weight: 600; font-size: 0.68rem; text-transform: uppercase;
+  letter-spacing: 0.04em; font-style: normal;
+}
+.roadmap-card-link {
+  margin-top: 0.5rem; font-size: 0.85rem; font-weight: 600;
+  color: var(--primary); text-decoration: none;
+}
+.roadmap-card-link:hover { text-decoration: underline; }
+
 .status {
   font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 999px;
   text-transform: uppercase; letter-spacing: 0.04em;
@@ -238,9 +430,6 @@ a:hover { text-decoration: underline; }
 .status.in_progress { background: rgba(0,200,5,0.15); color: var(--primary); }
 .status.live { background: rgba(0,200,5,0.2); color: var(--primary); }
 .status.coming_soon { background: rgba(160,160,160,0.15); color: var(--muted); }
-.roadmap-quarter { color: var(--muted); font-size: 0.85rem; }
-.roadmap-tagline { color: var(--gold); font-style: italic; margin: 0.25rem 0 0.5rem; }
-.roadmap-features { margin: 0; padding-left: 1.2rem; color: var(--muted); font-size: 0.9rem; }
 
 .tier-table { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
 .tier-card {

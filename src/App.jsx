@@ -1,6 +1,9 @@
-import { useEffect, useState } from 'react'
-import { hero, manifesto, roadmap, tiers, roadmapSection, joinSection, developersSection } from './content/manifesto.js'
-import { addresses, fetchProtocolStats, formatCountdown, formatUsd6 } from './chain.js'
+import { hero, manifesto, tiers, joinSection, developersSection } from './content/manifesto.js'
+import { formatCountdown, formatUsd6 } from './chain.js'
+import { useProtocolStats } from './hooks/useProtocolStats.js'
+import { HoodPotSection } from './components/HoodPotSection.jsx'
+import { RoadmapSection } from './components/RoadmapSection.jsx'
+import { SiteHeader } from './components/SiteHeader.jsx'
 import { StackStrip } from './components/StackStrip.jsx'
 
 const APP_URL = import.meta.env.PROD ? 'https://app.hoodbet.fun' : 'http://localhost:5174'
@@ -11,26 +14,7 @@ const EXPLORER = 'https://robinhoodchain.blockscout.com'
 const SAFE = '0x5FF989aCB81e612fb54d2BDE9C6334B4C9a8f117'
 
 function LiveTicker() {
-  const [stats, setStats] = useState(null)
-  const [now, setNow] = useState(() => Math.floor(Date.now() / 1000))
-
-  useEffect(() => {
-    let cancelled = false
-    fetchProtocolStats()
-      .then((data) => { if (!cancelled) setStats(data) })
-      .catch(() => { if (!cancelled) setStats(null) })
-    const poll = setInterval(() => {
-      fetchProtocolStats()
-        .then((data) => { if (!cancelled) setStats(data) })
-        .catch(() => {})
-    }, 60_000)
-    const tick = setInterval(() => setNow(Math.floor(Date.now() / 1000)), 1000)
-    return () => {
-      cancelled = true
-      clearInterval(poll)
-      clearInterval(tick)
-    }
-  }, [])
+  const { stats, now } = useProtocolStats()
 
   const countdown = stats?.drawClosesAt
     ? formatCountdown(Number(stats.drawClosesAt) - now)
@@ -58,33 +42,6 @@ function LiveTicker() {
   )
 }
 
-function HoodBetRoadmap() {
-  const statusLabel = (status) => {
-    if (status === 'live') return 'Live'
-    if (status === 'in_progress') return 'In Progress'
-    return 'Coming Soon'
-  }
-
-  return (
-    <div className="roadmap">
-      {roadmap.map((phase) => (
-        <div key={phase.name} className={`roadmap-item ${phase.status}`}>
-          <div className="roadmap-header">
-            <h3>{phase.name}</h3>
-            <span className={`status ${phase.status}`}>{statusLabel(phase.status)}</span>
-            <span className="roadmap-quarter">{phase.quarter}</span>
-          </div>
-          <p className="roadmap-tagline">{phase.tagline}</p>
-          <ul className="roadmap-features">
-            {phase.features.map((f) => (
-              <li key={f}>{f}</li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-  )
-}
 
 export default function App() {
   const ch1 = manifesto[0]
@@ -151,25 +108,7 @@ export default function App() {
           <p className="punchline">{ch2.punchline}</p>
         </section>
 
-        <section className="section section-featured" id="hoodpot">
-          <div className="featured-label">Live product</div>
-          <p className="section-label">{ch3.subtitle}</p>
-          <h2>{ch3.title}</h2>
-          {ch3.body.map((p) => <p key={p}>{p}</p>)}
-          <div className="steps">
-            {ch3.steps.map((s) => (
-              <div key={s.num} className="step">
-                <div className="step-num">{s.num}</div>
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
-              </div>
-            ))}
-          </div>
-          <div className="cta-row" style={{ marginTop: '2rem' }}>
-            <a className="btn btn-primary btn-lg" href={APP_URL}>Deposit on app.hoodbet.fun</a>
-            <a className="btn btn-secondary" href={`${EXPLORER}/address/${addresses.prizeVault}`} target="_blank" rel="noreferrer">PrizeVault on-chain</a>
-          </div>
-        </section>
+        <HoodPotSection content={ch3} appUrl={APP_URL} stack={hero.stack} />
 
         <section className="section" id="fairness">
           <p className="section-label">{ch4.subtitle}</p>
@@ -203,12 +142,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className="section" id="roadmap">
-          <p className="section-label">{roadmapSection.label}</p>
-          <h2>{roadmapSection.title}</h2>
-          <p>{roadmapSection.body}</p>
-          <HoodBetRoadmap />
-        </section>
+        <RoadmapSection />
 
         <section className="section" id="developers">
           <p className="section-label">{developersSection.label}</p>

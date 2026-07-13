@@ -41,8 +41,8 @@ export const manifesto = [
     title: 'Deposit. Don\'t lose. Win.',
     subtitle: 'HoodPot: the first shot',
     body: [
-      'HoodPot is our first weapon: a no-loss savings lottery.',
-      'Deposit USDG into the Morpho vault. Your capital stays withdrawable at all times.',
+      'HoodPot is our first weapon: a no-loss savings lottery — live on Robinhood Chain mainnet.',
+      'Deposit USDG into the HoodPot prize vault. Your capital stays withdrawable at all times.',
       'Yield — and protocol fees — fuel a shared jackpot.',
       'Every 24 hours, a random draw picks winners. More deposits, longer duration, better odds.',
     ],
@@ -79,9 +79,9 @@ export const roadmap = [
   {
     name: 'HoodPot',
     quarter: 'Q3 2026',
-    status: 'in_progress',
+    status: 'live',
     tagline: 'Your first shot. Deposit, lose nothing, someone wins it all.',
-    features: ['No-loss savings lottery', 'Daily draws', 'Landing + dApp live'],
+    features: ['Live on mainnet', 'Daily draws', 'app.hoodbet.fun'],
   },
   {
     name: 'HoodStats',

@@ -1,46 +1,76 @@
+import { useEffect, useState } from 'react'
 import { hero, manifesto, roadmap, tiers, roadmapSection, joinSection, developersSection } from './content/manifesto.js'
+import { addresses, fetchProtocolStats, formatCountdown, formatUsd6 } from './chain.js'
 
 const APP_URL = import.meta.env.PROD ? 'https://app.hoodbet.fun' : 'http://localhost:5174'
 const GITHUB_URL = 'https://github.com/hoodbet-fun'
 const GITBOOK_URL = 'https://hoodbet.gitbook.io/hoodbet-docs'
 const TELEGRAM_URL = 'https://t.me/+8KdjgSVzZr5hZjc0'
 const EXPLORER = 'https://robinhoodchain.blockscout.com'
-const MORPHO = '0xDF06045aBAE69d6e73a7F0197FED917032d22194'
 const SAFE = '0x5FF989aCB81e612fb54d2BDE9C6334B4C9a8f117'
 
-function JackpotTicker() {
+function LiveTicker() {
+  const [stats, setStats] = useState(null)
+  const [now, setNow] = useState(() => Math.floor(Date.now() / 1000))
+
+  useEffect(() => {
+    let cancelled = false
+    fetchProtocolStats()
+      .then((data) => { if (!cancelled) setStats(data) })
+      .catch(() => { if (!cancelled) setStats(null) })
+    const poll = setInterval(() => {
+      fetchProtocolStats()
+        .then((data) => { if (!cancelled) setStats(data) })
+        .catch(() => {})
+    }, 60_000)
+    const tick = setInterval(() => setNow(Math.floor(Date.now() / 1000)), 1000)
+    return () => {
+      cancelled = true
+      clearInterval(poll)
+      clearInterval(tick)
+    }
+  }, [])
+
+  const countdown = stats?.drawClosesAt
+    ? formatCountdown(Number(stats.drawClosesAt) - now)
+    : '—'
+
   return (
-    <div className="ticker">
-      <div className="ticker-item">
-        <strong>USDG</strong>
-        <span>Deposit asset</span>
+    <div className="ticker ticker-live">
+      <div className="ticker-item highlight">
+        <strong>${stats ? formatUsd6(stats.jackpot) : '—'}</strong>
+        <span>Prize pool</span>
       </div>
       <div className="ticker-item">
-        <strong>~$1</strong>
-        <span>TVL vault</span>
+        <strong>${stats ? formatUsd6(stats.tvl) : '—'}</strong>
+        <span>Vault TVL</span>
       </div>
       <div className="ticker-item">
-        <strong>24h</strong>
-        <span>Draw period</span>
+        <strong>{countdown}</strong>
+        <span>Next draw · #{stats?.openDrawId?.toString() || '—'}</span>
       </div>
       <div className="ticker-item">
         <strong>50%+5%</strong>
-        <span>Fee → jackpot</span>
+        <span>Fees → jackpot</span>
       </div>
     </div>
   )
 }
 
 function HoodBetRoadmap() {
+  const statusLabel = (status) => {
+    if (status === 'live') return 'Live'
+    if (status === 'in_progress') return 'In Progress'
+    return 'Coming Soon'
+  }
+
   return (
     <div className="roadmap">
       {roadmap.map((phase) => (
         <div key={phase.name} className={`roadmap-item ${phase.status}`}>
           <div className="roadmap-header">
             <h3>{phase.name}</h3>
-            <span className={`status ${phase.status}`}>
-              {phase.status === 'in_progress' ? 'In Progress' : 'Coming Soon'}
-            </span>
+            <span className={`status ${phase.status}`}>{statusLabel(phase.status)}</span>
             <span className="roadmap-quarter">{phase.quarter}</span>
           </div>
           <p className="roadmap-tagline">{phase.tagline}</p>
@@ -64,6 +94,7 @@ export default function App() {
 
   return (
     <div className="app">
+      <a className="mobile-cta" href={APP_URL}>Open HoodPot →</a>
       <div className="container">
         <nav className="nav">
           <div className="nav-logo">
@@ -78,22 +109,26 @@ export default function App() {
             <a href={GITBOOK_URL} target="_blank" rel="noreferrer">Docs</a>
             <a href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub</a>
             <a href={TELEGRAM_URL} target="_blank" rel="noreferrer">Telegram</a>
+            <a className="nav-cta" href={APP_URL}>Open app</a>
           </div>
         </nav>
 
         <header className="hero">
-          <div className="badge">{hero.badge}</div>
+          <div className="badge-row">
+            <div className="badge">{hero.badge}</div>
+            <span className="live-pill">● Mainnet live</span>
+          </div>
           <h1>
             {hero.headline}
             <span className="accent">{hero.headlineAccent}</span>
           </h1>
           <p className="lead">{hero.subheadline}</p>
           <div className="cta-row">
-            <a className="btn btn-primary" href={APP_URL}>{hero.ctaPrimary}</a>
+            <a className="btn btn-primary btn-lg" href={APP_URL}>{hero.ctaPrimary}</a>
             <a className="btn btn-secondary" href="#manifesto">{hero.ctaSecondary}</a>
           </div>
           <p className="micro">{hero.micro}</p>
-          <JackpotTicker />
+          <LiveTicker />
         </header>
 
         <section className="section" id="manifesto">
@@ -118,7 +153,8 @@ export default function App() {
           <p className="punchline">{ch2.punchline}</p>
         </section>
 
-        <section className="section" id="hoodpot">
+        <section className="section section-featured" id="hoodpot">
+          <div className="featured-label">Live product</div>
           <p className="section-label">{ch3.subtitle}</p>
           <h2>{ch3.title}</h2>
           {ch3.body.map((p) => <p key={p}>{p}</p>)}
@@ -132,8 +168,8 @@ export default function App() {
             ))}
           </div>
           <div className="cta-row" style={{ marginTop: '2rem' }}>
-            <a className="btn btn-primary" href={APP_URL}>Deposit now</a>
-            <a className="btn btn-secondary" href={`${EXPLORER}/address/${MORPHO}`} target="_blank" rel="noreferrer">Vault on-chain</a>
+            <a className="btn btn-primary btn-lg" href={APP_URL}>Deposit on app.hoodbet.fun</a>
+            <a className="btn btn-secondary" href={`${EXPLORER}/address/${addresses.prizeVault}`} target="_blank" rel="noreferrer">PrizeVault on-chain</a>
           </div>
         </section>
 
@@ -197,23 +233,23 @@ export default function App() {
           </div>
         </section>
 
-        <section className="section" id="join" style={{ textAlign: 'center' }}>
+        <section className="section join-section" id="join">
           <h2>{joinSection.title}</h2>
-          <p style={{ margin: '0 auto 1.5rem' }}>{joinSection.body}</p>
+          <p>{joinSection.body}</p>
           <div className="cta-row">
-            <a className="btn btn-primary" href={APP_URL}>{joinSection.cta}</a>
+            <a className="btn btn-primary btn-lg" href={APP_URL}>{joinSection.cta}</a>
             <a className="btn btn-secondary" href={TELEGRAM_URL} target="_blank" rel="noreferrer">{joinSection.telegram}</a>
           </div>
         </section>
 
         <footer className="footer">
           <div className="footer-links">
+            <a href={APP_URL}>HoodPot dApp</a>
             <a href={TELEGRAM_URL} target="_blank" rel="noreferrer">Telegram</a>
             <a href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub</a>
             <a href={GITBOOK_URL} target="_blank" rel="noreferrer">GitBook</a>
             <a href="https://morpho.org/" target="_blank" rel="noreferrer">Morpho</a>
             <a href="https://docs.robinhood.com/chain/" target="_blank" rel="noreferrer">Robinhood Chain</a>
-            <a href="https://www.virtuals.io/" target="_blank" rel="noreferrer">Virtuals</a>
           </div>
           <p>HoodBet.fun — experimental DeFi. Not financial advice.</p>
         </footer>

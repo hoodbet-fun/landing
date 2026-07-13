@@ -154,6 +154,26 @@ a:hover { text-decoration: underline; }
 }
 .footer-links { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 1rem; }
 
+.dev-links {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem; margin-top: 1.5rem; max-width: 720px;
+}
+.dev-card {
+  display: block; padding: 1.25rem; border-radius: 12px;
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--text); text-decoration: none; transition: border-color 0.15s, transform 0.15s;
+}
+.dev-card:hover {
+  border-color: rgba(0, 200, 5, 0.35); transform: translateY(-1px); text-decoration: none;
+}
+.dev-card strong { display: block; font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 0.35rem; }
+.dev-card > span { display: block; color: var(--muted); font-size: 0.9rem; }
+.dev-repos { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.85rem; }
+.dev-repos span {
+  font-size: 0.75rem; padding: 0.2rem 0.55rem; border-radius: 6px;
+  border: 1px solid var(--border); color: var(--muted);
+}
+
 @keyframes pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(0,200,5,0.4); }
   50% { box-shadow: 0 0 0 8px rgba(0,200,5,0); }

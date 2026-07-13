@@ -138,3 +138,19 @@ export const joinSection = {
   body: 'Join HoodPot. Hold $HOOD. Win the future.',
   cta: 'Enter HoodPot',
 }
+
+export const developersSection = {
+  label: 'For builders',
+  title: 'Open source. Fully documented.',
+  body:
+    'HoodBet is built in public. Smart contracts, bots, subgraph, and frontends live on GitHub. Architecture, deploy runbooks, and security checklists are on GitBook.',
+  github: {
+    label: 'GitHub',
+    hint: 'hoodbet-fun org · 6 repos',
+    repos: ['contracts', 'app', 'landing', 'bots', 'subgraph', 'hoodbet'],
+  },
+  gitbook: {
+    label: 'GitBook',
+    hint: 'Protocol docs & deploy guides',
+  },
+}

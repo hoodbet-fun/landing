@@ -1,6 +1,8 @@
-import { hero, manifesto, roadmap, tiers, roadmapSection, joinSection } from './content/manifesto.js'
+import { hero, manifesto, roadmap, tiers, roadmapSection, joinSection, developersSection } from './content/manifesto.js'
 
 const APP_URL = import.meta.env.VITE_APP_URL || 'http://localhost:5174'
+const GITHUB_URL = import.meta.env.VITE_GITHUB_URL || 'https://github.com/hoodbet-fun'
+const GITBOOK_URL = import.meta.env.VITE_GITBOOK_URL || 'https://hoodbet-fun.gitbook.io'
 const EXPLORER = 'https://robinhoodchain.blockscout.com'
 const MORPHO = '0xDF06045aBAE69d6e73a7F0197FED917032d22194'
 const SAFE = '0x5FF989aCB81e612fb54d2BDE9C6334B4C9a8f117'
@@ -72,6 +74,8 @@ export default function App() {
             <a href="#hoodpot">HoodPot</a>
             <a href="#roadmap">Roadmap</a>
             <a href="#hood-token">$HOOD</a>
+            <a href={GITBOOK_URL} target="_blank" rel="noreferrer">Docs</a>
+            <a href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </nav>
 
@@ -137,6 +141,8 @@ export default function App() {
           {ch4.body.map((p) => <p key={p}>{p}</p>)}
           <div className="badges">
             {ch4.badges.map((b) => <span key={b}>{b}</span>)}
+            <span>GitHub</span>
+            <span>GitBook</span>
           </div>
           <p style={{ marginTop: '1rem' }}>
             Safe:{' '}
@@ -168,6 +174,27 @@ export default function App() {
           <HoodBetRoadmap />
         </section>
 
+        <section className="section" id="developers">
+          <p className="section-label">{developersSection.label}</p>
+          <h2>{developersSection.title}</h2>
+          <p>{developersSection.body}</p>
+          <div className="dev-links">
+            <a className="dev-card" href={GITHUB_URL} target="_blank" rel="noreferrer">
+              <strong>{developersSection.github.label}</strong>
+              <span>{developersSection.github.hint}</span>
+              <div className="dev-repos">
+                {developersSection.github.repos.map((repo) => (
+                  <span key={repo}>{repo}</span>
+                ))}
+              </div>
+            </a>
+            <a className="dev-card" href={GITBOOK_URL} target="_blank" rel="noreferrer">
+              <strong>{developersSection.gitbook.label}</strong>
+              <span>{developersSection.gitbook.hint}</span>
+            </a>
+          </div>
+        </section>
+
         <section className="section" id="join" style={{ textAlign: 'center' }}>
           <h2>{joinSection.title}</h2>
           <p style={{ margin: '0 auto 1.5rem' }}>{joinSection.body}</p>
@@ -176,6 +203,8 @@ export default function App() {
 
         <footer className="footer">
           <div className="footer-links">
+            <a href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub</a>
+            <a href={GITBOOK_URL} target="_blank" rel="noreferrer">GitBook</a>
             <a href="https://dev.pooltogether.com/protocol/design/" target="_blank" rel="noreferrer">PoolTogether</a>
             <a href="https://morpho.org/" target="_blank" rel="noreferrer">Morpho</a>
             <a href="https://docs.robinhood.com/chain/" target="_blank" rel="noreferrer">Robinhood Chain</a>

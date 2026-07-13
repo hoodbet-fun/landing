@@ -70,7 +70,7 @@ export function VaultSnapshot({ vaultAddress = addresses.morphoVault, className 
       )}
 
       <div className="vault-snapshot-links">
-        <a href={morphoVaultAppUrl(vaultAddress)} target="_blank" rel="noreferrer">
+        <a href={morphoVaultAppUrl(vaultAddress, snapshot?.chainId, snapshot?.name || 'hoodbet.fun')} target="_blank" rel="noreferrer">
           Morpho app →
         </a>
         <a href={vaultExplorerUrl(vaultAddress)} target="_blank" rel="noreferrer">

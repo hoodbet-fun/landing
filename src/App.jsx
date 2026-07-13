@@ -52,25 +52,9 @@ export default function App() {
 
   return (
     <div className="app">
+      <SiteHeader appUrl={APP_URL} />
       <a className="mobile-cta" href={APP_URL}>Open HoodPot →</a>
       <div className="container">
-        <nav className="nav">
-          <div className="nav-logo">
-            <img src="/logo.png" alt="HoodBet" />
-            <span>hood<em>bet</em>.fun</span>
-          </div>
-          <div className="nav-links">
-            <a href="#manifesto">Manifesto</a>
-            <a href="#hoodpot">HoodPot</a>
-            <a href="#roadmap">Roadmap</a>
-            <a href="#hood-token">$HOOD</a>
-            <a href={GITBOOK_URL} target="_blank" rel="noreferrer">Docs</a>
-            <a href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub</a>
-            <a href={TELEGRAM_URL} target="_blank" rel="noreferrer">Telegram</a>
-            <a className="nav-cta" href={APP_URL}>Open app</a>
-          </div>
-        </nav>
-
         <header className="hero">
           <StackStrip items={hero.stack} className="stack-strip-hero" />
           <h1>

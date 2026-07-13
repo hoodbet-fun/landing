@@ -1,6 +1,8 @@
 import { hero, manifesto, roadmap, tiers, roadmapSection, joinSection, developersSection } from './content/manifesto.js'
 
-const APP_URL = import.meta.env.VITE_APP_URL || 'http://localhost:5174'
+const APP_URL =
+  import.meta.env.VITE_APP_URL ||
+  (import.meta.env.PROD ? 'https://app.hoodbet.fun' : 'http://localhost:5174')
 const GITHUB_URL = import.meta.env.VITE_GITHUB_URL || 'https://github.com/hoodbet-fun'
 const GITBOOK_URL = import.meta.env.VITE_GITBOOK_URL || 'https://hoodbet-fun.gitbook.io'
 const EXPLORER = 'https://robinhoodchain.blockscout.com'

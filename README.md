@@ -18,8 +18,12 @@ npm run build
 
 ## Environment
 
-| Variable | Default |
-|----------|---------|
-| `VITE_APP_URL` | `http://localhost:5174` |
-| `VITE_GITHUB_URL` | `https://github.com/hoodbet-fun` |
-| `VITE_GITBOOK_URL` | `https://hoodbet-fun.gitbook.io` |
+Vite bakes `VITE_*` variables at **build time**. For production, `/.env.production` sets `https://app.hoodbet.fun` automatically.
+
+| Variable | Development | Production |
+|----------|-------------|------------|
+| `VITE_APP_URL` | `http://localhost:5174` | `https://app.hoodbet.fun` |
+| `VITE_GITHUB_URL` | `https://github.com/hoodbet-fun` | same |
+| `VITE_GITBOOK_URL` | `https://hoodbet-fun.gitbook.io` | same |
+
+On Vercel: set the same `VITE_*` vars for **Production**, then **Redeploy** (env changes do not affect past builds).

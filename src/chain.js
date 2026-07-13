@@ -3,7 +3,7 @@ const RPC = 'https://rpc.mainnet.chain.robinhood.com'
 export const addresses = {
   morphoVault: '0xDF06045aBAE69d6e73a7F0197FED917032d22194',
   prizePool: '0x14e5004a757a85439fc379c8acd5b3b3cdf47344',
-  prizeVault: '0x318b89c2b407f091adcbc02854dd3f96e3470e17',
+  prizeVault: '0x11da9bE66d20328c6eA16d52079890322fA90f24',
 }
 
 async function ethCall(to, data) {

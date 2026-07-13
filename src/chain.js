@@ -4,6 +4,14 @@ export const addresses = {
   morphoVault: '0xDF06045aBAE69d6e73a7F0197FED917032d22194',
   prizePool: '0x14e5004a757a85439fc379c8acd5b3b3cdf47344',
   prizeVault: '0x11da9bE66d20328c6eA16d52079890322fA90f24',
+  hoodToken: '0x3b4b9E8982449aa6712F0d13162252A4a871D43e',
+}
+
+const EXPLORER = 'https://robinhoodchain.blockscout.com'
+
+export const hoodTokenLinks = {
+  virtuals: 'https://app.virtuals.io/virtuals/105591',
+  explorer: `${EXPLORER}/address/${addresses.hoodToken}`,
 }
 
 async function ethCall(to, data) {

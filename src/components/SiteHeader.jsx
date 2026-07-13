@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { hoodTokenLinks } from '../chain.js'
 
 const NAV_PRIMARY = [
   { label: 'Manifesto', href: '#manifesto' },
@@ -70,6 +71,14 @@ export function SiteHeader({ appUrl }) {
           </nav>
 
           <div className="site-header-actions">
+            <a
+              className="btn btn-secondary site-header-hood"
+              href={hoodTokenLinks.virtuals}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Buy $HOOD
+            </a>
             <a className="btn btn-primary site-header-cta" href={appUrl}>
               Open app
             </a>
@@ -121,6 +130,15 @@ export function SiteHeader({ appUrl }) {
             ))}
           </div>
 
+          <a
+            className="btn btn-secondary btn-lg site-nav-mobile-hood"
+            href={hoodTokenLinks.virtuals}
+            target="_blank"
+            rel="noreferrer"
+            onClick={closeMenu}
+          >
+            Buy $HOOD on Virtuals
+          </a>
           <a className="btn btn-primary btn-lg site-nav-mobile-cta" href={appUrl} onClick={closeMenu}>
             Open HoodPot
           </a>

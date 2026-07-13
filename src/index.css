@@ -156,6 +156,19 @@ a:hover { text-decoration: underline; }
   border-radius: 10px;
   white-space: nowrap;
 }
+.site-header-hood {
+  padding: 0.55rem 0.9rem !important;
+  font-size: 0.88rem !important;
+  border-radius: 10px;
+  white-space: nowrap;
+  border-color: rgba(255, 215, 0, 0.35) !important;
+  color: var(--gold) !important;
+  background: rgba(255, 215, 0, 0.08) !important;
+}
+.site-header-hood:hover {
+  background: rgba(255, 215, 0, 0.14) !important;
+  text-decoration: none;
+}
 .site-nav-toggle {
   display: none;
   align-items: center;
@@ -197,12 +210,14 @@ a:hover { text-decoration: underline; }
 
 @media (min-width: 1025px) and (max-width: 1180px) {
   .site-nav-group a { padding: 0.35rem 0.5rem; font-size: 0.82rem; }
-  .site-header-cta { padding: 0.5rem 0.8rem !important; font-size: 0.82rem !important; }
+  .site-header-cta,
+  .site-header-hood { padding: 0.5rem 0.8rem !important; font-size: 0.82rem !important; }
 }
 
 @media (max-width: 1024px) {
   .site-nav-desktop { display: none; }
-  .site-header-cta { display: none; }
+  .site-header-cta,
+  .site-header-hood { display: none; }
   .site-nav-toggle { display: inline-flex; }
 
   .site-nav-mobile {
@@ -272,9 +287,16 @@ a:hover { text-decoration: underline; }
     font-weight: 500;
     color: var(--muted);
   }
-  .site-nav-mobile-cta {
+  .site-nav-mobile-hood {
     width: 100%;
     margin-top: 1.5rem;
+    border-color: rgba(255, 215, 0, 0.35) !important;
+    color: var(--gold) !important;
+    background: rgba(255, 215, 0, 0.08) !important;
+  }
+  .site-nav-mobile-cta {
+    width: 100%;
+    margin-top: 0.65rem;
   }
 }
 
@@ -961,6 +983,87 @@ body.nav-open .mobile-cta { display: none !important; }
 .status.coming_soon { background: rgba(160,160,160,0.15); color: var(--muted); }
 
 .tier-table { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+
+.hood-token-card {
+  margin-top: 1.5rem;
+  padding: clamp(1rem, 2.5vw, 1.35rem) clamp(1rem, 2.5vw, 1.5rem);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 215, 0, 0.28);
+  background: linear-gradient(145deg, rgba(255, 215, 0, 0.08), rgba(0, 0, 0, 0.22));
+}
+.hood-token-card-head { margin-bottom: 0.85rem; }
+.hood-token-card-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+.hood-token-card-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  line-height: 1.25;
+}
+.hood-token-address-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.28);
+}
+.hood-token-address {
+  flex: 1;
+  min-width: 0;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: clamp(0.72rem, 1.6vw, 0.82rem);
+  color: rgba(255, 255, 255, 0.88);
+  word-break: break-all;
+  line-height: 1.4;
+}
+.hood-token-copy {
+  flex-shrink: 0;
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 200, 5, 0.35);
+  background: rgba(0, 200, 5, 0.1);
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.hood-token-copy:hover { background: rgba(0, 200, 5, 0.18); }
+.hood-token-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 0.85rem;
+}
+.hood-token-actions .btn {
+  font-size: 0.88rem;
+  padding: 0.55rem 0.95rem;
+}
+.hood-token-tiers-link {
+  margin-left: auto;
+}
+@media (max-width: 520px) {
+  .hood-token-tiers-link { margin-left: 0; width: 100%; text-align: center; }
+}
+.hood-token-note {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.hood-token-note strong { color: var(--gold); font-weight: 600; }
+
 .tier-card {
   border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem;
   background: linear-gradient(135deg, rgba(0,200,5,0.05), transparent);

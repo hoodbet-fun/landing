@@ -2,6 +2,7 @@ import { hero, manifesto, tiers, joinSection, developersSection } from './conten
 import { formatCountdown, formatUsd6 } from './chain.js'
 import { useProtocolStats } from './hooks/useProtocolStats.js'
 import { HoodPotSection } from './components/HoodPotSection.jsx'
+import { HoodTokenCard } from './components/HoodTokenCard.jsx'
 import { RoadmapSection } from './components/RoadmapSection.jsx'
 import { SiteHeader } from './components/SiteHeader.jsx'
 import { StackStrip } from './components/StackStrip.jsx'
@@ -115,7 +116,8 @@ export default function App() {
           <p className="section-label">{ch5.subtitle}</p>
           <h2>{ch5.title}</h2>
           {ch5.body.map((p) => <p key={p}>{p}</p>)}
-          <div className="tier-table">
+          <HoodTokenCard />
+          <div className="tier-table" id="hood-tiers">
             {tiers.map((t) => (
               <div key={t.name} className="tier-card">
                 <h4>{t.name}</h4>

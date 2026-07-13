@@ -1,5 +1,5 @@
 export const hero = {
-  badge: 'Robinhood Chain · Morpho · PoolTogether V5',
+  badge: 'Robinhood Chain · Morpho · HoodPot',
   headline: 'Trade the Future.',
   headlineAccent: 'Own the Outcome.',
   subheadline:
@@ -60,9 +60,9 @@ export const manifesto = [
     body: [
       'Every draw is verifiable on-chain. Every deposit is tracked with TWAB — the longer you stay, the more you count.',
       'The protocol is immutable. Governance sits in a public Safe multisig.',
-      'Morpho curates the vault. PoolTogether guarantees the no-loss model. You control the wallet.',
+      'Morpho curates the vault. HoodPot guarantees the no-loss model. You control the wallet.',
     ],
-    badges: ['Safe', 'Morpho', 'PoolTogether V5', 'Robinhood Chain', 'Blockscout'],
+    badges: ['Safe', 'Morpho', 'HoodPot', 'Robinhood Chain', 'Blockscout'],
   },
   {
     id: 'hood-token',
@@ -81,7 +81,7 @@ export const roadmap = [
     quarter: 'Q3 2026',
     status: 'in_progress',
     tagline: 'Your first shot. Deposit, lose nothing, someone wins it all.',
-    features: ['No-loss savings lottery PT + Morpho', 'Daily draws', 'Landing + dApp live'],
+    features: ['No-loss savings lottery', 'Daily draws', 'Landing + dApp live'],
   },
   {
     name: 'HoodStats',

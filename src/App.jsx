@@ -211,7 +211,6 @@ export default function App() {
             <a href={TELEGRAM_URL} target="_blank" rel="noreferrer">Telegram</a>
             <a href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub</a>
             <a href={GITBOOK_URL} target="_blank" rel="noreferrer">GitBook</a>
-            <a href="https://dev.pooltogether.com/protocol/design/" target="_blank" rel="noreferrer">PoolTogether</a>
             <a href="https://morpho.org/" target="_blank" rel="noreferrer">Morpho</a>
             <a href="https://docs.robinhood.com/chain/" target="_blank" rel="noreferrer">Robinhood Chain</a>
             <a href="https://www.virtuals.io/" target="_blank" rel="noreferrer">Virtuals</a>

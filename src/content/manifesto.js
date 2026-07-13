@@ -137,6 +137,7 @@ export const joinSection = {
   title: 'The crew is waiting.',
   body: 'Join HoodPot. Hold $HOOD. Win the future.',
   cta: 'Enter HoodPot',
+  telegram: 'Join Telegram',
 }
 
 export const developersSection = {

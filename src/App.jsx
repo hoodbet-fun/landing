@@ -3,6 +3,7 @@ import { hero, manifesto, roadmap, tiers, roadmapSection, joinSection, developer
 const APP_URL = import.meta.env.PROD ? 'https://app.hoodbet.fun' : 'http://localhost:5174'
 const GITHUB_URL = 'https://github.com/hoodbet-fun'
 const GITBOOK_URL = 'https://hoodbet.gitbook.io/hoodbet-docs'
+const TELEGRAM_URL = 'https://t.me/+8KdjgSVzZr5hZjc0'
 const EXPLORER = 'https://robinhoodchain.blockscout.com'
 const MORPHO = '0xDF06045aBAE69d6e73a7F0197FED917032d22194'
 const SAFE = '0x5FF989aCB81e612fb54d2BDE9C6334B4C9a8f117'
@@ -76,6 +77,7 @@ export default function App() {
             <a href="#hood-token">$HOOD</a>
             <a href={GITBOOK_URL} target="_blank" rel="noreferrer">Docs</a>
             <a href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub</a>
+            <a href={TELEGRAM_URL} target="_blank" rel="noreferrer">Telegram</a>
           </div>
         </nav>
 
@@ -198,11 +200,15 @@ export default function App() {
         <section className="section" id="join" style={{ textAlign: 'center' }}>
           <h2>{joinSection.title}</h2>
           <p style={{ margin: '0 auto 1.5rem' }}>{joinSection.body}</p>
-          <a className="btn btn-primary" href={APP_URL}>{joinSection.cta}</a>
+          <div className="cta-row">
+            <a className="btn btn-primary" href={APP_URL}>{joinSection.cta}</a>
+            <a className="btn btn-secondary" href={TELEGRAM_URL} target="_blank" rel="noreferrer">{joinSection.telegram}</a>
+          </div>
         </section>
 
         <footer className="footer">
           <div className="footer-links">
+            <a href={TELEGRAM_URL} target="_blank" rel="noreferrer">Telegram</a>
             <a href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub</a>
             <a href={GITBOOK_URL} target="_blank" rel="noreferrer">GitBook</a>
             <a href="https://dev.pooltogether.com/protocol/design/" target="_blank" rel="noreferrer">PoolTogether</a>

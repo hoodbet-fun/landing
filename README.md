@@ -24,6 +24,6 @@ Vite bakes `VITE_*` variables at **build time**. For production, `/.env.producti
 |----------|-------------|------------|
 | `VITE_APP_URL` | `http://localhost:5174` | `https://app.hoodbet.fun` |
 | `VITE_GITHUB_URL` | `https://github.com/hoodbet-fun` | same |
-| `VITE_GITBOOK_URL` | `https://hoodbet-fun.gitbook.io` | same |
+| `VITE_GITBOOK_URL` | `https://hoodbet.gitbook.io/hoodbet-docs` | same |
 
 On Vercel: set the same `VITE_*` vars for **Production**, then **Redeploy** (env changes do not affect past builds).

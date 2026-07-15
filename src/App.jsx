@@ -1,5 +1,6 @@
 import { hero, manifesto, tiers, joinSection, developersSection } from './content/manifesto.js'
 import { formatCountdown, formatUsd6 } from './chain.js'
+import { socialLinks } from './social.js'
 import { useProtocolStats } from './hooks/useProtocolStats.js'
 import { HoodPotSection } from './components/HoodPotSection.jsx'
 import { HoodTokenCard } from './components/HoodTokenCard.jsx'
@@ -7,10 +8,11 @@ import { RoadmapSection } from './components/RoadmapSection.jsx'
 import { SiteHeader } from './components/SiteHeader.jsx'
 import { StackStrip } from './components/StackStrip.jsx'
 
-const APP_URL = import.meta.env.PROD ? 'https://app.hoodbet.fun' : 'http://localhost:5174'
-const GITHUB_URL = 'https://github.com/hoodbet-fun'
-const GITBOOK_URL = 'https://hoodbet.gitbook.io/hoodbet-docs'
-const TELEGRAM_URL = 'https://t.me/+8KdjgSVzZr5hZjc0'
+const APP_URL = socialLinks.app
+const GITHUB_URL = socialLinks.github
+const GITBOOK_URL = socialLinks.gitbook
+const TELEGRAM_URL = socialLinks.telegram
+const X_URL = socialLinks.x
 const EXPLORER = 'https://robinhoodchain.blockscout.com'
 const SAFE = '0x5FF989aCB81e612fb54d2BDE9C6334B4C9a8f117'
 
@@ -163,10 +165,11 @@ export default function App() {
         <footer className="footer">
           <div className="footer-links">
             <a href={APP_URL}>HoodPot dApp</a>
+            <a href={X_URL} target="_blank" rel="noreferrer">X</a>
             <a href={TELEGRAM_URL} target="_blank" rel="noreferrer">Telegram</a>
             <a href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub</a>
             <a href={GITBOOK_URL} target="_blank" rel="noreferrer">GitBook</a>
-            <a href="https://morpho.org/" target="_blank" rel="noreferrer">Morpho</a>
+            <a href={socialLinks.morphoVault} target="_blank" rel="noreferrer">Morpho vault</a>
             <a href="https://docs.robinhood.com/chain/" target="_blank" rel="noreferrer">Robinhood Chain</a>
           </div>
           <p>HoodBet.fun — experimental DeFi. Not financial advice.</p>

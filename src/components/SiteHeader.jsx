@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { hoodTokenLinks } from '../chain.js'
+import { socialLinks } from '../social.js'
 
 const NAV_PRIMARY = [
   { label: 'Manifesto', href: '#manifesto' },
@@ -9,9 +10,10 @@ const NAV_PRIMARY = [
 ]
 
 const NAV_EXTERNAL = [
-  { label: 'Docs', href: 'https://hoodbet.gitbook.io/hoodbet-docs' },
-  { label: 'GitHub', href: 'https://github.com/hoodbet-fun' },
-  { label: 'Telegram', href: 'https://t.me/+8KdjgSVzZr5hZjc0' },
+  { label: 'X', href: socialLinks.x },
+  { label: 'Docs', href: socialLinks.gitbook },
+  { label: 'GitHub', href: socialLinks.github },
+  { label: 'Telegram', href: socialLinks.telegram },
 ]
 
 export function SiteHeader({ appUrl }) {
